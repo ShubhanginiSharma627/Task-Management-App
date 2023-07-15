@@ -18,7 +18,7 @@ const TaskList: React.FC<TaskListProps> = observer(({ openUpdateForm }) => {
       const parsedTasks = JSON.parse(storedTasks);
       replaceTasks(parsedTasks);
     }
-  }, []);
+  }, [replaceTasks]);
 
 
 
