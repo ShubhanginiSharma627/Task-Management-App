@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import { useRootStore } from '../hooks/useRootStore';
 import { useState, useEffect } from 'react';
 import TaskForm from './TaskForm';
-
+import TaskType from "../types/TaskType";
 
 interface TaskListProps {
   openUpdateForm: (task: TaskType) => void;
