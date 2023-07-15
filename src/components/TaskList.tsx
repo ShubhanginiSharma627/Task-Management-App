@@ -24,7 +24,7 @@ const TaskList: React.FC<TaskListProps> = observer(({ openUpdateForm }) => {
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
+  }, [tasks.length]);
 
   const handleOpenForm = () => {
     setIsFormOpen(true);
