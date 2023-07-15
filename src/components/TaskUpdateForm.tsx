@@ -3,7 +3,7 @@ import { useRootStore } from '../hooks/useRootStore';
 import { SetStateAction, useState } from 'react';
 import TaskType from "../types/TaskType";
 interface TaskUpdateFormProps {
-  task: TaskType;
+  task: TaskType | undefined;
   closeUpdateForm: () => void;
 }
 
