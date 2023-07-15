@@ -5,14 +5,14 @@ import { useState } from 'react';
 import TaskList from './TaskList';
 import TaskUpdateForm from './TaskUpdateForm';
 import React, { useEffect } from 'react';
-
+import { Task } from '../store';
 
 const TaskManagementApp = observer(() => {
     const [isOpen, setIsOpen] = useState(false);
     const [Task, setTask] = useState();
   
 
-    const openUpdateForm = (task) => {
+    const openUpdateForm = (task: typeof Task) => {
       setIsOpen(true);
       setTask(task);
     };
