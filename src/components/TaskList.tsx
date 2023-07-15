@@ -44,7 +44,7 @@ const TaskList: React.FC<TaskListProps> = observer(({ openUpdateForm }) => {
         +
       </button>
       {tasks.length === 0 ? (
-        <p className="text-gray-500 mt-8">No tasks available. Add a task using the &quot;+&quot; button.</p>
+        <p className="text-gray-500 mt-8">No tasks available. Add a task using the &quot;+ &quot; button.</p>
       ) : (
         <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {tasks.map((task) => (
