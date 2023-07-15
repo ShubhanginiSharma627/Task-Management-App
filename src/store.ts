@@ -1,5 +1,5 @@
-import { types, Instance, createContext } from 'mobx-state-tree';
-
+import { types, Instance } from 'mobx-state-tree';
+import TaskType from './types/TaskType';
 export const Task = types.model('Task', {
     id: types.identifier,
     title: types.string,
@@ -28,7 +28,7 @@ const RootStore = types
         self.tasks.splice(index, 1);
       }
     },
-    replaceTasks(parsedTasks:Task[]) {
+    replaceTasks(parsedTasks:TaskType[]) {
           self.tasks.replace(parsedTasks);
       },
     
