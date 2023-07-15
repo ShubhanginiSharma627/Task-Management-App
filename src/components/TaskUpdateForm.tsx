@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react';
 import { useRootStore } from '../hooks/useRootStore';
-import { useState } from 'react';
-
+import { SetStateAction, useState } from 'react';
+import TaskType from "../types/TaskType";
 interface TaskUpdateFormProps {
   task: TaskType;
   closeUpdateForm: () => void;
@@ -12,11 +12,11 @@ const TaskUpdateForm: React.FC<TaskUpdateFormProps> = observer(({ task, closeUpd
   const [status, setStatus] = useState(task.status || ''); 
   const [description, setDescription] = useState(task.description || ''); 
 
-  const handleStatusChange = (e) => {
+  const handleStatusChange = (e: { target: { value: SetStateAction<string>; }; }) => {
     setStatus(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     const updatedTask = {
@@ -29,7 +29,7 @@ const TaskUpdateForm: React.FC<TaskUpdateFormProps> = observer(({ task, closeUpd
     const storedTasks = localStorage.getItem('tasks');
     if (storedTasks) {
       const parsedTasks = JSON.parse(storedTasks);
-      const updatedTasks = parsedTasks.map((t) => {
+      const updatedTasks = parsedTasks.map((t: { id: string; }) => {
         if (t.id === task.id) {
           return updatedTask;
         }
