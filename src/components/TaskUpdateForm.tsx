@@ -9,16 +9,16 @@ interface TaskUpdateFormProps {
 
 const TaskUpdateForm: React.FC<TaskUpdateFormProps> = observer(({ task, closeUpdateForm }) => {
   const { updateTask, deleteTask } = useRootStore();
-  const [status, setStatus] = useState(task.status || ''); 
-  const [description, setDescription] = useState(task.description || ''); 
+  const [status, setStatus] = useState(task && task.status || ''); 
+  const [description, setDescription] = useState(task && task.description || ''); 
 
-  const handleStatusChange = (e: { target: { value: SetStateAction<string>; }; }) => {
+  const handleStatusChange = (e: any) => {
     setStatus(e.target.value);
   };
 
   const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-
+  if(task){
     const updatedTask = {
       ...task,
       status,
@@ -37,6 +37,8 @@ const TaskUpdateForm: React.FC<TaskUpdateFormProps> = observer(({ task, closeUpd
       });
       localStorage.setItem('tasks', JSON.stringify(updatedTasks));
     }
+  }
+    
     closeUpdateForm();
   };
 
