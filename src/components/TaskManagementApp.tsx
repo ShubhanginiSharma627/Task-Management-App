@@ -1,25 +1,24 @@
 
 import { observer } from 'mobx-react';
-import { useRootStore } from '../hooks/useRootStore';
 import { useState } from 'react';
 import TaskList from './TaskList';
 import TaskUpdateForm from './TaskUpdateForm';
-import React, { useEffect } from 'react';
-import { Task } from '../store';
+import React from 'react';
+import TaskType from "../types/TaskType";
 
 const TaskManagementApp = observer(() => {
     const [isOpen, setIsOpen] = useState(false);
-    const [Task, setTask] = useState();
+    const [Task, setTask] = useState<TaskType>();
   
 
-    const openUpdateForm = (task: typeof Task) => {
+    const openUpdateForm = (task:TaskType) => {
       setIsOpen(true);
       setTask(task);
     };
 
     const closeUpdateForm = () => {
       setIsOpen(false);
-      setTask(" ");
+      setTask(undefined);
     };
   
     return (
